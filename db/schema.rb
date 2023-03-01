@@ -44,11 +44,14 @@ ActiveRecord::Schema.define(version: 2023_02_27_132305) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.text "introduction"
     t.integer "price"
+    t.integer "genre_id"
+    t.string "image_id"
+    t.boolean "is_active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
