@@ -8,7 +8,6 @@
               <th class="active">注文ステータス</th>
             </tr>
           </thead>
-       </table>
 
         <tbody>
             <% @orders.each do |order| %>
@@ -18,3 +17,8 @@
                 <td><%= order.order_details.sum(:amount) %></td>
                 <td><%= order.status %></td>
               </tr>
+               <% end %>
+        </tboady>
+      </table>
+       <%= paginate @orders %>
+           

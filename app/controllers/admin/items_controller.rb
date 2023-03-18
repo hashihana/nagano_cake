@@ -5,7 +5,7 @@ class Admin::ItemsController < ApplicationController
   end
     
   def index
-    @item = Item.page(params[:page])
+    @items = Item.all.page(params[:page]).per(10)
   end
   
   def create
@@ -27,9 +27,21 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   
+  def update
+    @item = Item.find(params[:id])
+    if item.update(item_params)
+      flash[:notice] = "投稿の更新に成功しました"
+    redirect_to admin_product_path(@product)
+    else
+      render "show"
+    end
+  end
+  
+  private
+  
   def item_params
     params.require(:item).permit(:name, :image, :genre_id, :introduction, :price)
   end
 end
-  
+
 

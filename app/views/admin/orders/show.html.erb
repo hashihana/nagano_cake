@@ -1,0 +1,94 @@
+<h1>注文履歴詳細</h1>
+<div class="container">
+  <div class="row">
+     <div class="col-6">
+
+      <div>
+        <p>
+          <strong class="col-2">購入者</strong>
+        <%= link_to admin_customer_path(@order) do %>
+            <%= @order.customer.last_name %><%= @order.customer.first_name %>
+          <% end %>
+        </p>
+      </div>
+        <br>
+
+    <div>
+      <p>
+        <strong class="col-2">注文日</strong>
+        <%= order.created_at.to_s(:datetime_jp) %>
+      </p>
+    </div>
+    <br>
+
+    <div>
+      <p>
+        <strong class="col-2">配送先</strong><%= (@order.postal_code).to_s.insert(3, "-") %>
+        <%= @order.address %>
+      </p>
+    </div>
+      <br>
+      <div>
+        <p>
+            <strong class="col-2">支払方法</strong>
+            <%= @order.payment_method %>
+          </p>
+      </div>
+    </div>
+    </div>
+
+    <div class="row">
+  <div class="col-6">
+
+      <table class='order-show-table table'>
+      <thead>
+        <tr>
+          <th class="active">商品名</th>
+          <th class="active">単価（税込）</th>
+          <th class="active">数量</th>
+          <th class="active">小計</th>
+        <tr>
+      </thead>
+
+      <tbody>
+         <% @order_details.each do |order_detail| %>
+      <tbody>
+        <tr>
+          <td class="col-4"><%= order_detail.item_id.name%></td>
+          <td class="col-2">¥<%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
+          <td><%= order_detail.amount %></td>
+          <td class="col-2">¥<%= ((order_detail.price * order_detail.amount*1.1).floor).to_s(:delimited) %></td>
+      </tr>
+      </tbody>
+       <% end %>
+    </table>
+
+      </div>
+
+    <div class="col-4">
+    <div>
+      <p>
+      <strong class="col-3">商品合計</strong>
+      ¥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%>
+      </p>
+      </div>
+    <br>
+
+     <div>
+      <p>
+        <strong class="col-2">送料</strong>
+        ¥<%= @order.shipping_cost %>
+      </p>
+    </div>
+    <br>
+
+    <div>
+      <p>
+        <strong class="col-4">請求金額合計</strong>
+        ¥<%= @order.total_payment.to_s(:delimited) %>
+      </p>
+    </div>
+    <br>
+  </div>
+</div>
+</div>

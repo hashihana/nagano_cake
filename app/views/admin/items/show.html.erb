@@ -1,25 +1,31 @@
+<div class="container">
+  <div class="row">
+
 <h1>商品詳細</h1>
 
+<div class="col-md-4">
 <div>
   <%= image_tag @item.get_image(250,250) %>
 </div>
+
+    <div class="col-md-6">
 <div>
-   <p>商品名<%= @item.name %></p>
+   <p><strong class="col-md-2">商品名<%= @item.name %></p>
 </div>
 
 <div>
-   <p>商品説明<%= @item.introduction %></p>
+    <p><strong class="col-md-2">商品説明<%= @item.introduction %></p>
 </div>
 <div>
-  <p>ジャンル<%= @item.genre.name %></p>
-</div>
-
-<div>
-   <p>税込価格(税抜価格) </p> <%= @item.add_tax_price.to_s(:dalimited) %><%= (@item.price) %>
+   <p><strong class="col-md-2">ジャンル<%= @item.genre.name %></p>
 </div>
 
 <div>
-      <p>販売ステータス</p>
+    <p><strong class="col-md-4">税込価格(税抜価格) </p> <%= @item.add_tax_price.to_s(:dalimited) %><%= (@item.price) %>
+</div>
+
+<div>
+     <p><strong class="col-md-3">販売ステータス</p>
       <% if @item.is_active == true %>
         <%= "販売中" %>
       <% else %>
@@ -30,3 +36,8 @@
   <div>
  <%= link_to "編集する",edit_admin_item_path(item.id) %>
  </div>
+ 
+ </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
