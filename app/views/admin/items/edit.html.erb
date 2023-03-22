@@ -1,27 +1,34 @@
+<div class="container">
+  <div class="row">
+
 <h1>商品編集</h1>
 
+ <%= render 'items/error', model: @item %>
+
  <%= form_with model: @item, url: admin_items_path do |f| %>
-   <div>
+
+ <div class="col-lg-4">
       <%= f.label :image, "商品画像" %>
       <%= f.file_field :image, accept: "image/*" %>
     </div>
 
-      <div>
+<div class="col-lg-6">
+     <div class="form-group">
       <%= f.label :name, "商品名" %>
       <%= f.text_field :name %>
       </div>
 
-      <div>
+      <div class="form-group">
      <%= f.label :name, "商品説明" %>
       <%= f.text_area :introduction %>
       </div>
 
-      <div>
+      <div class="form-group">
       <%= f.label :price, "税抜価格" %>
       <%= f.text_field :price %>円
       </div>
 
-      <div>
+      <div class="form-group">
       <%= f.label :is_active, "販売ステータス" %>
       <%= f.select :is_active,[["販売中",true],["販売停止中",false]] %>
       </div>
@@ -30,3 +37,6 @@
           <%= f.submit "変更を保存" , class: "btn btn-primary"%></td>
         </div>
         <% end %>
+      </div>
+  </div>
+</div>
