@@ -9,8 +9,10 @@ protected
 def customer_state
    @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
-     if @customer.valid_password?(params[:customer][:password])
-  end
+     if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true))
+        flash[:alert] = "このアカウントは退会済みです。"
+        redirect_to new_customer_session_path
+     end
 end
   # GET /resource/sign_in
   # def new

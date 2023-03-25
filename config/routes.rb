@@ -10,6 +10,14 @@ scope module: :public do
 get 'top' => 'public/items#top'
 get 'about' => 'items#about'
 resources :items
+
+resources :customers do
+    member do
+       get 'confirm_withdraw'
+       patch 'withdraw'
+     end
+   end
+   
 end
 
  # 顧客用
