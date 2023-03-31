@@ -24,7 +24,7 @@
             <%= cart_item.item_id.name %>
           </td>
           <td>
-            ¥<%= (cart_item.item_id.price*1.1 ).floor.to_s(:delimited) %>
+            ¥<%=  cart_item.item.with_tax_price.to_s(:delimited) %>
           </td>
           <td>
             <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true do |f| %>
@@ -32,9 +32,9 @@
               <%= f.number_field :amount, size: 1, min: 1 %>　<%= f.submit "変更" %>
             <% end %>
           </td>
-          <td>¥<%= cart_item.sub_total.to_s(:delimited) %></td>
+          <td>¥<%= cart_item.subtotal.to_s(:delimited) %></td>
           <td>
-            <%= link_to cart_product_path(cart_product), method: :delete do %>
+            <%= link_to cart_item_path(cart_item), method: :delete do %>
               <button class="btn btn-danger">削除</button>
             <% end %>
           </td>
@@ -43,13 +43,13 @@
     </table>
 	</div>
 	<div class="row">
-		<div class="col-xs-4">
+		<div class="col-md-4">
 	    <%= link_to root_path do %>
 	      <button class="btn btn-primary">買い物を続ける</button>
 	    <% end %>
 	  </div>
-		<div class="col-xs-4"></div>
-		<div class="col-xs-4">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
 	    <table class="table">
 	      <tr>
 	        <th class="active">合計金額</th>
@@ -58,8 +58,8 @@
 	    </table>
 	  </div>
     <div class="text-center">
-		  <% if current_customer.cart_products.any? %>
-		      <% if current_customer.cart_products.any? %>
+		  <% if current_customer.cart_items.any? %>
+		      <% if current_customer.cart_items.any? %>
 		      	<%= link_to new_order_path do %>
 		          <button class="btn btn-lg btn-success">情報入力に進む</button>
 		        <% end %>
