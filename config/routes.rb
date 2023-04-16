@@ -14,7 +14,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
   
   namespace :admin do
-    resources :items, only:[:index, :new, :create, :show, :edit, :update]
+    get "items/top" => "items#top"
+    resources :items
     resources :customers, only:[:index, :new, :create, :show, :edit, :update]
     resources :orders, only:[:index, :new, :create, :show, :edit, :update]
   end
@@ -23,6 +24,8 @@ scope module: :public do
   root 'items#top'
 get 'top' => 'public/items#top'
 get 'about' => 'items#about'
+get 'orders/thanks' => "orders#thanks"
+post 'orders/confirm'
 resources :items
 
 resources :customers do
@@ -31,7 +34,8 @@ resources :customers do
        patch 'withdraw'
      end
    end
-   
+   resources :cart_items
+   resources :orders,only: [:index, :new, :create, :show]
 end
 
 

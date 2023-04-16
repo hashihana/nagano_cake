@@ -3,34 +3,35 @@
 
 <h2>商品新規登録</h2>
 
- <%= render 'items/error', model: @item %>
-
+<div class="col-12">
+ </div>
+<%= render 'product_errors', product: @item %>
   <%= form_with model: @item, url: admin_items_path do |f| %>
   
-  <div class="col-md-6">
+  <div class="col-xs-12">
 
       <div class="form-group">
-      <%= f.label :image, "商品画像", class:"col-md-2" %>
+      <%= f.label :image, "商品画像", class:"col-5" %>
       <%= f.file_field :image, accept: "image/*" %>
       </div>
 
       <div class="form-group">
-      <%= f.label :name, "商品名", class:"col-md-2"  %>
+      <%= f.label :name, "商品名", class:"col-5"  %>
       <%= f.text_field :name, size:"56x5" %>
       </div>
 
       <div class="form-group">
-     <%= f.label :name, "商品説明", class:"col-md-2"   %>
+     <%= f.label :name, "商品説明", class:"col-5"   %>
       <%= f.text_area :introduction, size:"55x5" %>
       </div>
 
       <div class="form-group">
-      <%= f.label :price, "税抜価格", class:"col-md-2"   %>
+      <%= f.label :price, "税抜価格", class:"col-5"   %>
       <%= f.text_field :price, size:"56x5" %>円
       </div>
 
       <div class="form-group">
-      <%= f.label :is_active, "販売ステータス", class:"col-md-3"  %>
+      <%= f.label :is_active, "販売ステータス", class:"col-7"  %>
       <%= f.select :is_active,[["販売中",true],["販売停止中",false]],include_blank: "選択して下さい" %>
       </div>
 

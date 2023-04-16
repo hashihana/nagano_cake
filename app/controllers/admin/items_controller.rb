@@ -1,5 +1,9 @@
 class Admin::ItemsController < ApplicationController
   
+  def top
+    @orders = Order.where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  end
+
   def new
     @item = Item.new
   end
@@ -12,7 +16,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       flash[:notice] = "投稿が成功しました"
-      redirect_to admin_item_path
+      redirect_to admin_item_path(@item)
       else
       render :new
     end

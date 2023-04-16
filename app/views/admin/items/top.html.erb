@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>管理者トップ画面</h2>
+  </br>
+  </br>
+  <h3>本日の注文件数:
+    <b><%= link_to admin_orders_path, class: "btn-link" do %>
+        <%= @orders.count %>件
+        <% end %>
+    </b>
+  </h3>
+
+</div>

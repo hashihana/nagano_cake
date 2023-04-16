@@ -8,10 +8,17 @@ protected
 
 def customer_state
    @customer = Customer.find_by(email: params[:customer][:email])
+   puts 'test1'
     return if !@customer
-     if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true))
+    puts 'test2'
+     #if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == true))
+     if (@customer.valid_password?(params[:customer][:password]) )
+       puts 'test3'
+       if @customer.is_deleted == true
+         puts 'test4'
         flash[:alert] = "このアカウントは退会済みです。"
         redirect_to new_customer_session_path
+       end
      end
 end
   # GET /resource/sign_in

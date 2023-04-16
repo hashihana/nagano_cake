@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <h1 class="head-line title_h2 text-center">マイページ</h1>
+    <div></div>
     <div class="text-left">
       <span>登録情報</span>
       <%= link_to "編集する", edit_customer_path(@customer.id), class: "btn btn-primary" %>
@@ -9,7 +10,7 @@
     <table class="my-page-table table">
       <tbody>
         <tr>
-          <td class="active col-xs-3">氏名</td>
+          <td class="active col-3">氏名</td>
           <td><%= (@customer.last_name + @customer.first_name) %></td>
         </tr>
         <tr>
@@ -34,12 +35,7 @@
         </tr>
       </tbody>
     </table>
-    <div>
-      <b>配送先</b>
-    </div>
-    <div>
-      <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
-    </div>
+ 
     <div>
       <b>注文履歴</b>
     </div>

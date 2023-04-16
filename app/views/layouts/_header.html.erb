@@ -3,7 +3,7 @@
     <div class="row">
       <nav class="nav navbar-nav navbar-left">
       <% if admin_signed_in? %>
-        <%= link_to "Nagano Cake", admin_products_top_path, class: "fas fa-birthday-cake" %>
+        <%= link_to "Nagano Cake", admin_items_top_path, class: "fas fa-birthday-cake" %>
       <% else %>
         <%= link_to "Nagano Cake", root_path, class: "fas fa-birthday-cake" %>
       <% end %>
@@ -25,7 +25,8 @@
             <li><%= link_to "会員一覧", admin_customers_path %></li>
             <li><%= link_to "注文履歴一覧", admin_orders_path %></li>
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-            <%= render "layouts/search" %>
+            <li><%= link_to "商品新規登録", new_admin_item_path %></li>
+           
           <% else %>
 
             <li><%= link_to "about", about_path %></li>

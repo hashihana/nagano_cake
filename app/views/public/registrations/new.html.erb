@@ -50,6 +50,10 @@
           <%= f.label :"パスワード(6文字以上)", class: "col-lg-4" %>
           <%= f.password_field :password, autocomplete: "off", class: "col-lg-3" %>
   </div>
+  <div class="row form-group">
+    <%= f.label :"確認用", class: "col-lg-4" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "col-lg-3"  %>
+  </div>
 
    <div class="text-center">
         <%= f.submit "新規登録" ,class: "btn btn-success" %>

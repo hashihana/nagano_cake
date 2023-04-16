@@ -1,0 +1,6 @@
+<% if product.errors.any? %>
+  <%= product.errors.count %>prohibited this obj from being saved:
+  <% product.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>

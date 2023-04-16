@@ -1,6 +1,6 @@
-<h1>商品一覧</h1>
 
 <div class="container">
+  <h1>商品一覧</h1>
   <div class="row justify-content-center">
      <div class="col-8">
 
@@ -10,7 +10,7 @@
       <th>商品ID</th>
       <th>商品名</th>
       <th>税抜価格</th>
-      <th>ジャンル</th>
+      <!--<th>ジャンル</th>-->
       <th>ステータス</th>
  </tr>
 </thead>
@@ -20,9 +20,10 @@
         <td><%= item.id %></td>
         <td><%= link_to item.name,admin_item_path(item) %></td>
         <td><%= item.price.to_s(:delimited) %></td>
-        <td><%= item.genre.name %></td>
+        <!--<td><%#= item.genre.name %></td>-->
        <td>
-           <% if item.is_active == true %>
+           <!--<%# if item.is_active == true %>-->
+           <%if item.is_active %>
                販売中
               <% else %>
                <%=  "販売停止中" %>

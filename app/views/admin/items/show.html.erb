@@ -1,31 +1,34 @@
 <div class="container">
-  <div class="row">
 
 <h1>商品詳細</h1>
 
+<div class="row">
+
 <div class="col-md-4">
-<div>
-  <%= image_tag @item.get_image(250,250) %>
+  <!--<%# image_tag @item.get_image(250,250) image,size: "250x250"%>-->
+  <%= image_tag @item.image,size: "250x250"%>
 </div>
 
     <div class="col-md-6">
 <div>
-   <p><strong class="col-md-2">商品名<%= @item.name %></p>
+   <p><strong class="col-md-2">商品名</strong><%= @item.name %></p>
+</div>
+<br>
+<div>
+    <p><strong class="col-md-2">商品説明</strong><%= @item.introduction %></p>
+</div>
+<br>
+
+<!--<div>-->
+<!--   <p><strong class="col-md-2">ジャンル<%#= @item.genre.name %></p>-->
+<!--</div>-->
+
+<div>
+    <p><strong class="col-md-4">税込価格(税抜価格)</strong><%= @item.add_tax_price.to_s(:dalimited) %><%= (@item.price) %></p>
 </div>
 
 <div>
-    <p><strong class="col-md-2">商品説明<%= @item.introduction %></p>
-</div>
-<div>
-   <p><strong class="col-md-2">ジャンル<%= @item.genre.name %></p>
-</div>
-
-<div>
-    <p><strong class="col-md-4">税込価格(税抜価格) </p> <%= @item.add_tax_price.to_s(:dalimited) %><%= (@item.price) %>
-</div>
-
-<div>
-     <p><strong class="col-md-3">販売ステータス</p>
+     <p><strong class="col-md-3">販売ステータス</strong>
       <% if @item.is_active == true %>
         <%= "販売中" %>
       <% else %>
@@ -33,8 +36,9 @@
       <% end %>
       <br>
   </div>
-  <div>
- <%= link_to "編集する",edit_admin_item_path(item.id) %>
+ 
+  <div class="text-center">
+     <%= link_to "編集する",edit_admin_item_path(@item.id), class:"btn btn-primary" %>
  </div>
  
  </div>
