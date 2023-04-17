@@ -23,6 +23,7 @@
       <%= f.label :address, "登録済住所から選択" %>
       <br>
       <%= f.collection_select :id, @address, :id, :order_ship,{prompt: "選択してください"},class: "form-control" %>
+       <!--<%#= f.collection_select :id, @ship_cities, :id, :order_ship,{prompt: "選択してください"},class: "form-control" %>-->
       <br>
       <%= f.radio_button :address_option, 2 %>
       <%= f.label :address, "新しいお届け先" %>

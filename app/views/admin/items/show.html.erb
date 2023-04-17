@@ -24,7 +24,7 @@
 <!--</div>-->
 
 <div>
-    <p><strong class="col-md-4">税込価格(税抜価格)</strong><%= @item.add_tax_price.to_s(:dalimited) %><%= (@item.price) %></p>
+    <p><strong class="col-md-4">税込価格(税抜価格)</strong><%= @item.with_tax_price.to_s(:dalimited) %></p>
 </div>
 
 <div>

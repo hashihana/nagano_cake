@@ -34,6 +34,7 @@ resources :customers do
        patch 'withdraw'
      end
    end
+   delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all_cart_items'
    resources :cart_items
    resources :orders,only: [:index, :new, :create, :show]
 end

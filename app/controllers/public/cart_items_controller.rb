@@ -24,7 +24,7 @@ def update
   
   def create
     @cart_item = current_customer.cart_items.new(params_cart_item)
-    if current_customer.cart_items.find_by(product_id: params[:cart_item][:item_id]).present?
+    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.save
@@ -41,7 +41,7 @@ def update
 
   def destroy_all
     current_customer.cart_items.destroy_all
-    redirect_to cart_items_path
+    redirect_to cart_items_path, notice: 'カートが空になりました。' 
   end
 
 

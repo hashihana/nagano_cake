@@ -1,8 +1,9 @@
 <div class="container">
 <h1>ショッピングカート</h1>
+
 	<div class="row">
 		<div class="text-right">
-		    <%= link_to cart_items_destroy_all_path, method: :delete do %>
+		    <%= link_to destroy_all_cart_items_path, method: :delete do %>
 		      <button class="btn btn-danger ">カートを空にする</button>
 		    <% end %>
 		</div>
@@ -20,8 +21,9 @@
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
-            <%= attachment_image_tag cart_item.item, :image, format:'jpeg', fallback:"no_image.jpg", size:"50x50" %>
-            <%= cart_item.item_id.name %>
+            <!--<%#= attachment_image_tag cart_item.item, :image, format:'jpeg', fallback:"no_image.jpg", size:"50x50" %>-->
+             <%= image_tag cart_item.item.get_image(50,50) %>
+            <%= cart_item.item.name %>
           </td>
           <td>
             ¥<%=  cart_item.item.with_tax_price.to_s(:delimited) %>
