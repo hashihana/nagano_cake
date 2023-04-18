@@ -25,6 +25,12 @@ class Public::CustomersController < ApplicationController
         #ユーザーの情報を見つける
 
     end
+    
+    # def quit
+    #     @customer = current_customer
+        
+
+    # end
 
 
     def withdraw
@@ -32,7 +38,7 @@ class Public::CustomersController < ApplicationController
         @customer.update(is_deleted: false)
         reset_session
         flash[:notice] = "Thank you for the good rating. We hope to see you again."
-　　　　redirect_to root_path
+        redirect_to root_path
     end
 
 
