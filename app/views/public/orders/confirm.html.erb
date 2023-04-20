@@ -12,12 +12,12 @@
         </tr>
       </thead>
       <tbody>
-        
+
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td>
               <!--<%#= attachment_image_tag cart_item.item, :image, fallback: "no_image.jpg", size:"80x50" %>-->
-              <%= image_tag item.get_image(80,50) %><br>
+              <%= image_tag cart_item.item.get_image(80,50) %><br>
               <%= cart_item.item.name %>
           </td>
           <td>¥<%= cart_item.item.with_tax_price.to_s(:delimited) %>円</td>
@@ -57,14 +57,15 @@
       </div>
   </div>
   <div class="row">
-    <h3>支払方法</h3>
-      <h4><%= @order.payment %></h4>
+   <h3>支払方法</h3>
+      <h4><%= @order.payment_method %></h4>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %></br>
-    <h3>お届け先</h3>
+      
+   <h3>お届け先</h3>
       <%= @order.postal_code.to_s.insert(3, "-") %></br>
       <%= f.hidden_field :postal_code, :value => @order.postal_code %>
       <%= @order.address %></br>
-      <%= f.hidden_field :city, :value => @order.address %>
+      <%= f.hidden_field :address, :value => @order.address %>
       <%= @order.name %></br>
       <%= f.hidden_field :name, :value => @order.name %>
 

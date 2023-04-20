@@ -16,7 +16,7 @@
     <div>
       <p>
         <strong class="col-2">注文日</strong>
-        <%= order.created_at.to_s(:datetime_jp) %>
+        <%= @order.created_at.to_s(:datetime_jp) %>
       </p>
     </div>
     <br>
@@ -54,7 +54,7 @@
          <% @order_details.each do |order_detail| %>
       <tbody>
         <tr>
-          <td class="col-4"><%= order_detail.item_id.name%></td>
+          <td class="col-4"><%= order_detail.item.name %></td>
           <td class="col-2">¥<%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
           <td class="col-2">¥<%= ((order_detail.price * order_detail.amount*1.1).floor).to_s(:delimited) %></td>
@@ -69,7 +69,7 @@
     <div>
       <p>
       <strong class="col-3">商品合計</strong>
-      ¥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%>
+      <!--¥<%#= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%>-->
       </p>
       </div>
     <br>
@@ -85,7 +85,7 @@
     <div>
       <p>
         <strong class="col-4">請求金額合計</strong>
-        ¥<%= @order.total_payment.to_s(:delimited) %>
+        <!--¥<%#= @order.total_payment.to_s(:delimited) %>-->
       </p>
     </div>
     <br>

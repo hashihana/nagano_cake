@@ -16,6 +16,6 @@ class CartItem < ApplicationRecord
       array << cart_item.item.price * cart_item.amount
     end
     return (array.sum * 1.1).floor
-    end
+  end
 
 end
