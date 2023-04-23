@@ -6,8 +6,10 @@ class ApplicationController < ActionController::Base
    def after_sign_in_path_for(resource)
     if customer_signed_in?
         root_path
+        # customer_path(current_customer)
     else
       admin_items_top_path
+     
     end
   end
 

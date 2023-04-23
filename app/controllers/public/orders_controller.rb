@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
  def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-
+    @order.shipping_cost = 800
     if @order.save!
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.total_payment = params[:order][:total_payment]
+    @order.payment_method = params[:order][:payment_method]
     @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
     @order.shipping_cost = 800
 
@@ -72,6 +72,14 @@ class Public::OrdersController < ApplicationController
 
   def thanks
   end
+  
+  def calculate(user)
+     total_payment = 0
+     user.cart_items.each do |cart_item|
+       total_payment += cart_item.amount * cart_item.item.price
+     end
+     return (total_payment * 1.1).floor
+   end
 
   private
 

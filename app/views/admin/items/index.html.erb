@@ -3,7 +3,9 @@
   <h1>商品一覧</h1>
   <div class="row justify-content-center">
      <div class="col-8">
-
+       <div class="new_item">
+       <li><%= link_to "商品新規登録", new_admin_item_path %></li>
+       </div>
 <table class="table item-table">
 <thead>
   <tr>
@@ -34,6 +36,6 @@
           </tbody>
         </table>
         <%= paginate @items %>
-        
+
     </div>
 </div>
