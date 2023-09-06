@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-md-3">
@@ -20,14 +19,13 @@
       <div class="recommend-container d-flex flex-row">
         <% @random.each do |item| %>
           <div class="recommend-product">
-  		        <% if item.is_active == true %>
-            <%= link_to item_path(item) do %>
-              <!--<%#= attachment_image_tag item, :image, fallback: 'no_image.jpg', size:'180x130' %><br>-->
-              <p><%= image_tag item.get_image(180,130) %></p>
-               <% end %>
-            <p><%= item.name %></p>
-            <p>¥<%= (item.price*1.1).floor.to_s(:delimited)%>(税込)</p>
-        <% end %>
+		        <% if item.is_active == true %>
+              <%= link_to item_path(item) do %>
+                <p><%= image_tag item.get_image(180,130) %></p>
+              <% end %>
+              <p><%= item.name %></p>
+              <p>¥<%= (item.price*1.1).floor.to_s(:delimited)%>(税込)</p>
+            <% end %>
           </div>
         <% end %>
       </div>
