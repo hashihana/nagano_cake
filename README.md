@@ -1,9 +1,7 @@
 # NaganoCake
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+# 概要
+## 長野県にある小さな洋菓子店「ながの CAKE」の商品を通販するための EC サイトです。
 
 * Ruby version
 
