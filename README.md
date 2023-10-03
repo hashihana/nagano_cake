@@ -6,3 +6,10 @@
 ## 開発環境
 ### 使用言語
 - HTML&CSS
+- Ruby
+
+### フレームワーク
+- Ruby on rails
+
+### Gem
+- device
